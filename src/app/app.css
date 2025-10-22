@@ -1,0 +1,56 @@
+/* src/app/app.component.css - Minimal CSS Overrides for Visual Order */
+
+/* --- General Container Styling --- */
+.date-range-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 50px auto;
+}
+/* ... (Other general styles) ... */
+
+
+/* src/app/app.component.css - FINAL, ULTIMATE VISUAL FIX */
+
+/* --- General Container Styling (Keep existing styles here) --- */
+
+/* 🛑 VISUAL FIX 1: Push the Suffix container (Toggle/Clear) to the LEFT */
+/* We target the main flex container that holds the inputs and the suffix wrapper */
+:host ::ng-deep .mat-mdc-form-field-flex {
+    display: flex !important;
+}
+
+/* Push the Suffix wrapper to the far left using order: -1. This places 
+   both the Toggle and the Clear button before the inputs visually. */
+:host ::ng-deep .mat-mdc-form-field-suffix {
+    order: -1; /* VISUALLY moves the suffix container to the left of the inputs */
+    display: flex !important;
+    align-items: center;
+    margin-right: 8px; /* Spacing between the toggle/clear and the inputs */
+    margin-left: 0; 
+}
+
+/* 🛑 VISUAL FIX 2: Re-order items *within* the Suffix container */
+/* The Suffix container now holds: [Toggle] [Clear] (visually on the left).
+   We need the Clear button to jump past the inputs to the far right. */
+:host ::ng-deep .clear-button {
+    /* Use margin-left: auto to push the clear button as far right as possible. 
+       Since the suffix wrapper is order:-1, the auto margin will push the button
+       past the main input field and to the end of the entire container. */
+    margin-left: auto !important; 
+    
+    /* Ensure the button stays visually next to the edge of the form field */
+    padding-right: 0;
+}
+
+/* 🛑 VISUAL FIX 3: Ensure the Toggle (which is first in the suffix block) 
+   stays anchored to the far left edge of the whole component. */
+:host ::ng-deep .mat-datepicker-toggle {
+    /* Set the toggle to a low order so it anchors left. */
+    order: 1; 
+}
