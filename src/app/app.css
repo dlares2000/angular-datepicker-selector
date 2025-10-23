@@ -1,16 +1,23 @@
-/* src/app/app.component.css - Minimal CSS Overrides for Visual Order */
-
-/* --- General Container Styling --- */
-.date-range-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 40px;
-  background-color: #f4f4f4;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 500px;
-  margin: 50px auto;
+.custom-datepicker-wrapper {
+    display: flex;
+    align-items: center; 
+    gap: 10px; 
 }
-/* ... (Other general styles) ... */
 
+/* 🛑 VISUAL ORDER FIX: Toggle (1) -> Inputs (2) -> Clear (3) */
+
+/* Toggle is VISUALLY FIRST */
+.toggle-btn { 
+    order: 1; 
+}
+
+/* Inputs are VISUALLY SECOND */
+.inputs-container { 
+    order: 2; 
+    flex-grow: 1; 
+}
+
+/* Clear Button is VISUALLY LAST */
+.clear-btn { 
+    order: 3; 
+}
