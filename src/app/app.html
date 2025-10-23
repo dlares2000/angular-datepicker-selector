@@ -1,17 +1,16 @@
 <div class="date-range-container">
-  <h1 class="title">Date Range Selector 006</h1>
+  <h1 class="title">Date Range Selector - Standard 002</h1>
 
   <mat-form-field appearance="outline" class="date-range-field">
-    
+    <mat-label>Select Date Range</mat-label> 
     <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
-      <input matStartDate formControlName="start" placeholder="Start date" tabindex="1">
-      <input matEndDate formControlName="end" placeholder="End date" tabindex="2">
+      <input matStartDate formControlName="start" placeholder="Start date">
+      <input matEndDate formControlName="end" placeholder="End date">
     </mat-date-range-input>
     
     <mat-datepicker-toggle 
       matSuffix 
       [for]="picker" 
-      tabindex="3"
       class="date-toggle" 
     ></mat-datepicker-toggle> 
     
@@ -21,7 +20,6 @@
         mat-icon-button 
         aria-label="Clear" 
         (click)="clearDates()"
-        tabindex="4"
         class="clear-button"
       >
         <mat-icon>close</mat-icon>
